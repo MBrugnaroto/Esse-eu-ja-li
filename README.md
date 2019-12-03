@@ -1,2 +1,2 @@
-# Esse-eu-ja-li
+# Esse-eu-já-li
 Um pequeno sistema de gameficação de para leitura de livros.
