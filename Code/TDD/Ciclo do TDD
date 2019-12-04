@@ -18,3 +18,11 @@ Sprint 1:
 1 -> acessoPermitidoIntegradoAoBanco();
 2 -> acessoNegadoIntegradoAoBancoSenhaErrada();
 3 -> acessoNegadoIntegradoAoBancoUserNameErrado();
+
+----------------------------> User Store 2 <--------------------------------
+1 -> Visualização da lista de livros com integração ao banco de livros	  | OK
+
+--> Requisito 1 - testes:
+1 -> retornaUmLivro();
+2 -> retornaUmaListaDosLivros();
+3 -> naoExisteLivros();
