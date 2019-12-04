@@ -3,14 +3,14 @@ package src.sistema;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import src.bancoDeDados.BancoDeDados;
+import src.bancoDeDados.BancoDeUsuários;
 
-public class SistemaDeAcesso {
+public class SistemaDeLogin {
 	private String _isKey;
-	private BancoDeDados _isBD;
+	private BancoDeUsuários _isBD;
 	
-	public SistemaDeAcesso() throws FileNotFoundException, IOException {
-		_isBD = new BancoDeDados();
+	public SistemaDeLogin() throws FileNotFoundException, IOException {
+		_isBD = new BancoDeUsuários();
 	}
 	
 	public String login(String username, String key) throws FileNotFoundException, IOException {

@@ -8,28 +8,28 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 import src.bancoDeDados.BancoDeUsuários;
-import src.sistema.SistemaDeAcesso;
+import src.sistema.SistemaDeLogin;
 
 class Login {
 	
 	//Requisito 1:
 	@Test
 	void erroLoginSemUsername() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("", "kado123");
 		assertEquals(acesso, "Acesso Negado");
 	}
 	
 	@Test
 	void erroLoginSemKey() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("kadore", "");
 		assertEquals(acesso, "Acesso Negado");
 	}
 	
 	@Test
 	void loginSimples() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("kadore", "kado123");
 		assertEquals(acesso, "Acesso Permitido");
 	}
@@ -57,21 +57,21 @@ class Login {
 	//Requisito 3:
 	@Test
 	void acessoPermitidoIntegradoAoBanco() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("kadore", "kado123");
 		assertEquals(acesso, "Acesso Permitido");
 	}
 	
 	@Test
 	void acessoNegadoIntegradoAoBancoSenhaErrada() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("kadore", "kado1234");
 		assertEquals(acesso, "Acesso Negado");
 	}
 	
 	@Test
 	void acessoNegadoIntegradoAoBancoUserNameErrado() throws FileNotFoundException, IOException {
-		SistemaDeAcesso l1 = new SistemaDeAcesso ();
+		SistemaDeLogin l1 = new SistemaDeLogin ();
 		String acesso = l1.login("kadoreee", "kado123");
 		assertEquals(acesso, "Username inválido");
 	}
