@@ -11,19 +11,28 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 abstract class TratamentoDeArquivos {
-	protected List<String[]> lendoOArquivo() throws FileNotFoundException, IOException {
-		BufferedReader br = new BufferedReader(new FileReader("Banco de Usuários/Registro de Usuários"));
-		List<String[]> dadosDoArquivo = new ArrayList<>();
+	private List<String[]> _isDadosDoArquivo;
+	
+	public TratamentoDeArquivos() {
+		_isDadosDoArquivo = null;
+	}
+	
+	protected List<String[]> lendoOArquivo(String bancoSolicitado) throws FileNotFoundException, IOException {
+		BufferedReader br = new BufferedReader(new FileReader("Banco de Dados/"+bancoSolicitado));
 		String[] dado;
 
 		br.readLine();
+		
+		if (br.ready()) _isDadosDoArquivo = new ArrayList<>();
+		
 		while(br.ready()){
 			dado = br.readLine().split(Pattern.quote("|"));
-			dado[0] = dado[0].trim();
-			dado[1] = dado[1].trim();
-			dadosDoArquivo.add(dado);
+			for (int i = 0; i < dado.length; i++) {
+				dado[i] = dado[i].trim();
+			}
+			_isDadosDoArquivo.add(dado);
 		}
 		br.close();
-		return dadosDoArquivo;
+		return _isDadosDoArquivo;
 	}
 }
