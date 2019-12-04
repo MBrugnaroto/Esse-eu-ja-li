@@ -1,0 +1,20 @@
+Sprint 1:
+----------------------------> User Store 1 <--------------------------------
+1 -> Acesso informando username e key. 	 		 | OK
+2 -> Acesso ao banco de usuários.  		 		 | OK
+3 -> Integração com o banco de usuários.  		 | OK
+
+--> Requisito 1 - testes:
+1 -> erroLoginSemUsername();
+2 -> erroLoginSemKey();
+3 -> loginSimples();
+
+--> Requisito 2 - testes:
+1 -> retornaUsernameInválido();
+2 -> returnaUmaKey();
+3 -> retornaUmaKeyAPartirDoUsername();
+
+--> Requisito 3 - testes:
+1 -> acessoPermitidoIntegradoAoBanco();
+2 -> acessoNegadoIntegradoAoBancoSenhaErrada();
+3 -> acessoNegadoIntegradoAoBancoUserNameErrado();
