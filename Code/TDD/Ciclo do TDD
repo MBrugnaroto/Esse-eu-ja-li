@@ -23,6 +23,11 @@ Sprint 1:
 1 -> Visualização da lista de livros com integração ao banco de livros	  | OK
 
 --> Requisito 1 - testes:
-1 -> retornaUmLivro();
-2 -> retornaUmaListaDosLivros();
-3 -> naoExisteLivros();
+1 -> retornaUmaListaDosLivros();
+2 -> naoExisteLivros();
+
+----------------------------> User Store 3 <--------------------------------
+1 -> Visualização das info de um livro integração ao banco de livros	  | OK
+
+--> Requisito 1 - testes:
+1 -> retornaUmLivroExpecifico();

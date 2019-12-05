@@ -12,7 +12,8 @@ import src.sistema.SistemaDeLogin;
 
 class Login {
 	
-	//Requisito 1:
+	
+	//US1 - Requisito 1:
 	@Test
 	void erroLoginSemUsername() throws FileNotFoundException, IOException {
 		SistemaDeLogin l1 = new SistemaDeLogin ();
@@ -34,7 +35,7 @@ class Login {
 		assertEquals(acesso, "Acesso Permitido");
 	}
 	
-	//Requisito 2:
+	//US1 - Requisito 2:
 	@Test
 	void retornaUsernameInválido() throws FileNotFoundException, IOException {
 		BancoDeUsuários bd = new BancoDeUsuários();
@@ -54,7 +55,7 @@ class Login {
 		assertEquals(informacao, "kado123");
 	}
 	
-	//Requisito 3:
+	//US1 - Requisito 3:
 	@Test
 	void acessoPermitidoIntegradoAoBanco() throws FileNotFoundException, IOException {
 		SistemaDeLogin l1 = new SistemaDeLogin ();
