@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-abstract class TratamentoDeArquivos {
+public abstract class TratamentoDeArquivos {
 	private List<String[]> _isDadosDoArquivo;
 	
 	public TratamentoDeArquivos() {
@@ -20,14 +20,14 @@ abstract class TratamentoDeArquivos {
 	protected List<String[]> lendoOArquivo(String bancoSolicitado) throws FileNotFoundException, IOException {
 		BufferedReader br = new BufferedReader(new FileReader("Banco de Dados/"+bancoSolicitado));
 		String[] dado;
-
+		int i = 0;
 		br.readLine();
 		
 		if (br.ready()) _isDadosDoArquivo = new ArrayList<>();
 		
 		while(br.ready()){
 			dado = br.readLine().split(Pattern.quote("|"));
-			for (int i = 0; i < dado.length; i++) {
+			for (i = 0; i < dado.length; i++) {
 				dado[i] = dado[i].trim();
 			}
 			_isDadosDoArquivo.add(dado);

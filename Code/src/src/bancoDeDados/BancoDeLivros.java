@@ -7,16 +7,23 @@ import java.util.List;
 
 public class BancoDeLivros extends TratamentoDeArquivos {
 	private List<String[]> _isDadosDoArquivo;
+	private String [] infoLivros;
 	
 	public BancoDeLivros () throws FileNotFoundException, IOException {
 		_isDadosDoArquivo = lendoOArquivo("Registro de Livros");
 	}
 
-	public String[] getLivro() {
-		if (_isDadosDoArquivo == null) {
-			return null;
+	public String[] getLivro(String nomeLivro) {
+		int i = 0;
+		
+		while (i < _isDadosDoArquivo.size()) {
+			if (_isDadosDoArquivo.get(i)[0].equalsIgnoreCase(nomeLivro)) {
+				return _isDadosDoArquivo.get(i);
+			}
+			i++;
 		}
-		return _isDadosDoArquivo.get(0);
+		
+		return null;
 	}
 
 	public List<String> getListaDeLivros() {
