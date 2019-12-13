@@ -58,3 +58,9 @@ Sprint 1:
 2 -> calculandoPontosPorNumeroDePaginas();
 3 -> calculandoPontosTotal();
 
+----------------------------> User Store 5.3 <--------------------------------
+1 -> Verifica se o leitor tem um tipo preferido de livro				  | OK
+
+--> Requisito 1 - testes:
+1 -> listaOsEstilosPreferidos();
+2 -> naoTemEstilosPreferidos();
