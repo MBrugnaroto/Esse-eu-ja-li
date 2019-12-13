@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.TreeMap;
 import src.bancoDeDados.TratamentoDeArquivos;
 
 public class Pontuacao extends TratamentoDeArquivos{
@@ -22,21 +22,54 @@ public class Pontuacao extends TratamentoDeArquivos{
 	}
 
 	public Integer calculandoPontuacao(String nomeDoLeitor) throws FileNotFoundException, IOException {
-		return calculandoTotalDePontos(coletandoDados(nomeDoLeitor));
+		return calculandoTotalDePontos(coletandoDadosDoUsuario(nomeDoLeitor));
 	}
 	
 	public List<String> identificandoEstilosDoLeitor(String nomeDoLeitor) throws FileNotFoundException, IOException {
 		return verificandoOsEstilosDoLeitor(nomeDoLeitor);
 	}
 	
-	public List<String[]> coletandoDados(String nomeDoLeitor) throws FileNotFoundException, IOException {
-		List<String[]> dadosDoLeitor = lendoOArquivo("Registro de Leitura", nomeDoLeitor);
+	public List<String> listaDePontuadores() throws FileNotFoundException, IOException {
+		return listandoOsPontuadores(coletandoTodosOsDados());
+	}
+
+	public List<String[]> coletandoDadosDoUsuario(String nomeDoLeitor) throws FileNotFoundException, IOException {
+		return lendoOArquivo("Registro de Leitura", nomeDoLeitor);
+	}
+	
+	protected List<String[]> coletandoTodosOsDados() throws FileNotFoundException, IOException {
+		return lendoOArquivo("Registro de Leitura");
+	}
+	
+	protected ArrayList<String> listandoOsPontuadores(List<String[]> registroDePontuacoes) throws FileNotFoundException, IOException {
+		Map<String, Integer> listaDePontuadores = new HashMap<>();
 		
-		return dadosDoLeitor;
+		for (String[] registro : registroDePontuacoes) {
+			listaDePontuadores.put(registro[4], calculandoPontuacao(registro[4]));
+		}
+	    
+		return ordenandoDescrescente(listaDePontuadores);
+	}
+
+	protected ArrayList<String> ordenandoDescrescente(Map<String, Integer> listaDePontuadores) {
+		TreeMap<String, Integer> treeMap = new TreeMap<>();
+		ArrayList<String> lista = new ArrayList<>();
+    	int i = 1;
+    
+		treeMap.putAll(listaDePontuadores);
+		
+	    for(String key : treeMap.descendingKeySet()) {
+			lista.add("Posicao: "+i+" -> Nome: "+key+" | "+"Pontuacao: "+treeMap.get(key));
+			i++;
+			
+			if (i == 11) break;
+		}
+	    
+	    return lista;
 	}
 
 	protected List<String> verificandoOsEstilosDoLeitor(String nomeDoLeitor) throws FileNotFoundException, IOException {
-		List<String[]> dadosDoLeitor = coletandoDados(nomeDoLeitor);
+		List<String[]> dadosDoLeitor = coletandoDadosDoUsuario(nomeDoLeitor);
 		
 		for (int i = 0; i < dadosDoLeitor.size(); i++) {
 			verificandoEstilo(dadosDoLeitor, i, "Ficção");
