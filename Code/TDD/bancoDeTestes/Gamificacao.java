@@ -32,6 +32,21 @@ class Gamificacao {
 	@Test
 	void calculandoPontosTotal() throws FileNotFoundException, IOException {
 		Pontuacao P = new Pontuacao();
-		assertEquals(P.calculandoPontuacao("Nanotec"), 18);
+		assertEquals(P.calculandoPontuacao("Nanotec"), 26);
 	}
+	
+	//US5.3 - Requisito 1:
+	@Test
+	void listaOsEstilosPreferidos() throws FileNotFoundException, IOException {
+		Pontuacao P = new Pontuacao();
+		List<String> estilos = P.identificandoEstilosDoLeitor("Nanotec");
+		assertEquals(estilos.get(0), "Negócios");
+		assertEquals(estilos.get(1), "Autoajuda");
+	}
+	@Test
+	void naoTemEstilosPreferidos() throws FileNotFoundException, IOException {
+		Pontuacao P = new Pontuacao();
+		assertEquals(P.identificandoEstilosDoLeitor("Mateus").isEmpty(), true);
+	}
+	
 }
