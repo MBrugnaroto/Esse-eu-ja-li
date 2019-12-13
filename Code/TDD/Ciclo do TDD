@@ -64,3 +64,13 @@ Sprint 1:
 --> Requisito 1 - testes:
 1 -> listaOsEstilosPreferidos();
 2 -> naoTemEstilosPreferidos();
+
+----------------------------> User Store 6.1 <--------------------------------
+1 -> Listar o nome de todos os leitores que pontuaram     				  | OK
+2 -> Listar a pontuacao de todos os leitores que pontuaram 				  | OK
+
+--> Requisito 1 - testes:
+1 -> listandoONomeDosLeitoresQuePontuaram();
+
+--> Requisito 2 - testes:
+1 -> listandoAPontuacao();
