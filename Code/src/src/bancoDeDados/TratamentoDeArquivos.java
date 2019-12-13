@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -15,6 +16,19 @@ public abstract class TratamentoDeArquivos {
 	
 	public TratamentoDeArquivos() {
 		_isDadosDoArquivo = null;
+	}
+	
+	protected void adicionandoLivroNoArquivo(String[] infoDoLivro, String nomeDoLeitor) throws IOException {
+		FileWriter arquivo = new FileWriter("Banco de Dados/Registro de Leitura", true);
+		BufferedWriter arquivoEscrita = new BufferedWriter(arquivo);
+		arquivoEscrita.write("\n");
+		
+		for (int i = 0; i < infoDoLivro.length; i++) {
+			arquivoEscrita.write(infoDoLivro[i] + " | ");
+		}
+		arquivoEscrita.write(nomeDoLeitor);
+		arquivoEscrita.close();
+		
 	}
 	
 	protected List<String[]> lendoOArquivo(String bancoSolicitado) throws FileNotFoundException, IOException {

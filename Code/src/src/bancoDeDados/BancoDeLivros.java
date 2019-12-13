@@ -7,7 +7,6 @@ import java.util.List;
 
 public class BancoDeLivros extends TratamentoDeArquivos {
 	private List<String[]> _isDadosDoArquivo;
-	private String [] infoLivros;
 	
 	public BancoDeLivros () throws FileNotFoundException, IOException {
 		_isDadosDoArquivo = lendoOArquivo("Registro de Livros");
