@@ -16,7 +16,7 @@ class Gamificacao {
 	@Test
 	void selecionandoDados() throws FileNotFoundException, IOException {
 		Pontuacao P = new Pontuacao();
-		List<String[]> dados = P.coletandoDados("Mateus Brugnaroto");
+		List<String[]> dados = P.coletandoDadosDoUsuario("Mateus Brugnaroto");
 		assertEquals(dados.get(0)[0], "O Poder da Autorresponsabilidade");
 		assertEquals(dados.get(1)[0], "Vamos ve o que vai da pra fechar");
 		assertEquals(dados.get(2)[0], "Esse aqui e a pegadinha do jogo");
@@ -24,7 +24,7 @@ class Gamificacao {
 	@Test
 	void selecionandoDadoDeUmUsuarioInexistente() throws FileNotFoundException, IOException {
 		Pontuacao P = new Pontuacao();
-		List<String[]> dados = P.coletandoDados("Mateus");
+		List<String[]> dados = P.coletandoDadosDoUsuario("Mateus");
 		assertEquals(dados.isEmpty(), true);
 	}
 	
@@ -32,7 +32,7 @@ class Gamificacao {
 	@Test
 	void calculandoPontosTotal() throws FileNotFoundException, IOException {
 		Pontuacao P = new Pontuacao();
-		assertEquals(P.calculandoPontuacao("Nanotec"), 26);
+		assertEquals(P.calculandoPontuacao("Mateus Brugnaroto"), 22);
 	}
 	
 	//US5.3 - Requisito 1:
@@ -43,10 +43,12 @@ class Gamificacao {
 		assertEquals(estilos.get(0), "Negócios");
 		assertEquals(estilos.get(1), "Autoajuda");
 	}
-	@Test
-	void naoTemEstilosPreferidos() throws FileNotFoundException, IOException {
-		Pontuacao P = new Pontuacao();
-		assertEquals(P.identificandoEstilosDoLeitor("Mateus").isEmpty(), true);
-	}
 	
+	//US6.1 - Requisito 1:
+		@Test
+		void listandoONomeDosLeitoresQuePontuaram() throws FileNotFoundException, IOException {
+			Pontuacao P = new Pontuacao();
+			assertEquals(P.listaDePontuadores().get(0), "Posicao: 1 -> Nome: Nanotec | Pontuacao: 26");
+			assertEquals(P.listaDePontuadores().get(1), "Posicao: 2 -> Nome: Mateus Brugnaroto | Pontuacao: 22");
+		}	
 }
