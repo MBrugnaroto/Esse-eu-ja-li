@@ -1,2 +1,2 @@
-/bin/
-.project
+# ignore all logs
+*.project
