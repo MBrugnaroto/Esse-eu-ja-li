@@ -42,3 +42,19 @@ Sprint 1:
 
 --> Requisito 2 - testes:
 1 -> adiconaLivroQueNaoEstaNoBanco();
+
+----------------------------> User Store 5.2 <--------------------------------
+1 -> Seleciona todos os pontos registrados pelo leitor					  | OK
+2 -> Filtrar os dados coletados e calcular a pontuacao					  | OK
+
+--> Requisito 1 - testes:
+1 -> selecionandoApenasUmDado();
+2 -> selecionandoMaisDeUmDado();
+3 -> selecionandoDadoDeUmUsuarioEspecifico();
+3 -> selecionandoDadoDeUmUsuarioInexistente();
+
+--> Requisito 2 - testes:
+1 -> selecionandoONumeroDePaginas();
+2 -> calculandoPontosPorNumeroDePaginas();
+3 -> calculandoPontosTotal();
+
