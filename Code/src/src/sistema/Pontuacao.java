@@ -26,48 +26,51 @@ public class Pontuacao extends TratamentoDeArquivos{
 	}
 	
 	public List<String> identificandoEstilosDoLeitor(String nomeDoLeitor) throws FileNotFoundException, IOException {
+		return verificandoOsEstilosDoLeitor(nomeDoLeitor);
+	}
+	
+	public List<String[]> coletandoDados(String nomeDoLeitor) throws FileNotFoundException, IOException {
+		List<String[]> dadosDoLeitor = lendoOArquivo("Registro de Leitura", nomeDoLeitor);
+		
+		return dadosDoLeitor;
+	}
+
+	protected List<String> verificandoOsEstilosDoLeitor(String nomeDoLeitor) throws FileNotFoundException, IOException {
 		List<String[]> dadosDoLeitor = coletandoDados(nomeDoLeitor);
-		List<String> estilosDoLeitor = new ArrayList<>();
 		
 		for (int i = 0; i < dadosDoLeitor.size(); i++) {
-			if (dadosDoLeitor.get(i)[2].equals("Ficção")) {
-				estilos.put("Ficção", estilos.get("Ficção")+1);
-			}
-			if (dadosDoLeitor.get(i)[2].equals("não-ficção")) {
-				estilos.put("não-ficção", estilos.get("não-ficção")+1);
-			}
-			if (dadosDoLeitor.get(i)[2].equals("Autoajuda")) {
-				estilos.put("Autoajuda", estilos.get("Autoajuda")+1);
-			}
-			if (dadosDoLeitor.get(i)[2].equals("Infantojuvenil")) {
-				estilos.put("Infantojuvenil", estilos.get("Infantojuvenil")+1);
-			}
-			if (dadosDoLeitor.get(i)[2].equals("Negócios")) {
-				estilos.put("Negócios", estilos.get("Negócios")+1);
-			}
+			verificandoEstilo(dadosDoLeitor, i, "Ficção");
+			verificandoEstilo(dadosDoLeitor, i, "não-ficção");
+			verificandoEstilo(dadosDoLeitor, i, "Autoajuda");
+			verificandoEstilo(dadosDoLeitor, i, "Infantojuvenil");
+			verificandoEstilo(dadosDoLeitor, i, "Negócios");
 		}
 		
-		if (estilos.get("Ficção") >= 5) {
-			estilosDoLeitor.add("Ficção");
-		}
+		return listandoOsTrofeusPorEstilo();
+	}
+	
+	protected List<String> listandoOsTrofeusPorEstilo() {
+		List<String> estilosDoLeitor = new ArrayList<>();
 		
-		if (estilos.get("não-ficção") >= 5) {
-			estilosDoLeitor.add("não-ficção");
-		}
-		
-		if (estilos.get("Negócios") >= 5) {
-			estilosDoLeitor.add("Negócios");
-		}
-		
-		if (estilos.get("Autoajuda") >= 5) {
-			estilosDoLeitor.add("Autoajuda");
-		}
-		
-		if (estilos.get("Infantojuvenil") >= 5) {
-			estilosDoLeitor.add("Infantojuvenil");
-		}
+		contandoNumeroDeLivrosDoMesmoEstilo(estilosDoLeitor, "Ficção");
+		contandoNumeroDeLivrosDoMesmoEstilo(estilosDoLeitor, "não-ficção");
+		contandoNumeroDeLivrosDoMesmoEstilo(estilosDoLeitor, "Negócios");
+		contandoNumeroDeLivrosDoMesmoEstilo(estilosDoLeitor, "Autoajuda");
+		contandoNumeroDeLivrosDoMesmoEstilo(estilosDoLeitor, "Infantojuvenil");
 		
 		return estilosDoLeitor;
+	}
+	
+	protected void contandoNumeroDeLivrosDoMesmoEstilo(List<String> estilosDoLeitor, String estilo) {
+		if (estilos.get(estilo) >= 5) {
+			estilosDoLeitor.add(estilo);
+		}
+	}
+
+	protected void verificandoEstilo(List<String[]> dadosDoLeitor, int i, String estilo) {
+		if (dadosDoLeitor.get(i)[2].equals(estilo)) {
+			estilos.put(estilo, estilos.get(estilo)+1);
+		}
 	}
 
 	protected int calculandoTotalDePontos(List<String[]> dados) {
@@ -84,11 +87,5 @@ public class Pontuacao extends TratamentoDeArquivos{
 		}
 		
 		return pontuacao;
-	}
-
-	public List<String[]> coletandoDados(String nomeDoLeitor) throws FileNotFoundException, IOException {
-		List<String[]> dadosDoLeitor = lendoOArquivo("Registro de Leitura", nomeDoLeitor);
-		
-		return dadosDoLeitor;
 	}
 }
