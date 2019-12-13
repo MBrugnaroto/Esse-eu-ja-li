@@ -14,11 +14,8 @@ import java.util.regex.Pattern;
 public abstract class TratamentoDeArquivos {
 	private List<String[]> _isDadosDoArquivo;
 	
-	public TratamentoDeArquivos() {
-		_isDadosDoArquivo = null;
-	}
-	
 	protected void adicionandoLivroNoArquivo(String[] infoDoLivro, String nomeDoLeitor) throws IOException {
+		
 		FileWriter arquivo = new FileWriter("Banco de Dados/Registro de Leitura", true);
 		BufferedWriter arquivoEscrita = new BufferedWriter(arquivo);
 		arquivoEscrita.write("\n");
@@ -32,6 +29,7 @@ public abstract class TratamentoDeArquivos {
 	}
 	
 	protected List<String[]> lendoOArquivo(String bancoSolicitado) throws FileNotFoundException, IOException {
+		_isDadosDoArquivo = null;
 		BufferedReader br = new BufferedReader(new FileReader("Banco de Dados/"+bancoSolicitado));
 		String[] dado;
 		int i = 0;
@@ -46,6 +44,31 @@ public abstract class TratamentoDeArquivos {
 			}
 			_isDadosDoArquivo.add(dado);
 		}
+		br.close();
+		return _isDadosDoArquivo;
+	}
+	
+	protected List<String[]> lendoOArquivo(String bancoSolicitado, String nomeDoLeitor) throws FileNotFoundException, IOException {
+		BufferedReader br = new BufferedReader(new FileReader("Banco de Dados/"+bancoSolicitado));
+		String[] dado;
+		int i = 0;
+		br.readLine();
+		
+		if (br.ready()) {
+			_isDadosDoArquivo = new ArrayList<>();
+		}
+		
+		while(br.ready()){
+			dado = br.readLine().split(Pattern.quote("|"));
+			for (i = 0; i < dado.length; i++) {
+				dado[i] = dado[i].trim();
+			}
+			
+			if (dado[i-1].equalsIgnoreCase(nomeDoLeitor)) {
+				_isDadosDoArquivo.add(dado);
+			}
+		}
+		
 		br.close();
 		return _isDadosDoArquivo;
 	}
