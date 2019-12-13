@@ -31,3 +31,14 @@ Sprint 1:
 
 --> Requisito 1 - testes:
 1 -> retornaUmLivroExpecifico();
+
+----------------------------> User Store 4 <--------------------------------
+1 -> Adicionar o Livro Lido no banco de leitura							  | OK 
+2 -> Adicionar o livro lido que nao esta no banco						  | OK
+
+--> Requisito 1 - testes:
+1 -> adicionarInformacoesDoLivro();
+2 -> adicionarNomeDoLeitor();
+
+--> Requisito 2 - testes:
+1 -> adiconaLivroQueNaoEstaNoBanco();

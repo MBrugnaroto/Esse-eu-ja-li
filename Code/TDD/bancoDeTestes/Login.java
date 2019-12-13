@@ -12,7 +12,6 @@ import src.sistema.SistemaDeLogin;
 
 class Login {
 	
-	
 	//US1 - Requisito 1:
 	@Test
 	void erroLoginSemUsername() throws FileNotFoundException, IOException {
