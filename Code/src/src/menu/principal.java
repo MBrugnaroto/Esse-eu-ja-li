@@ -6,6 +6,7 @@ import java.io.IOException;
 public class principal {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
+		//Inicio do projeto
 		SistemaDeControle SC = new SistemaDeControle();
 		
 	}

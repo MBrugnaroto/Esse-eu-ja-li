@@ -8,15 +8,15 @@ import src.sistema.SistemaDeLeitura;
 import src.sistema.SistemaDePontuacao;
 
 public class SistemaDoMenu {
-	private BancoDeLivros BL;
-	private SistemaDePontuacao SP;
-	private SistemaDeLeitura SL;
+	private BancoDeLivros _isBL;
+	private SistemaDePontuacao _isSP;
+	private SistemaDeLeitura _isSL;
 	private String _isUsernameDoLeitor;
 	
 	public SistemaDoMenu(String usernameDoLeitor) throws FileNotFoundException, IOException {
-		BL = new BancoDeLivros();
-		SP = new SistemaDePontuacao();
-		SL = new SistemaDeLeitura();
+		_isBL = new BancoDeLivros();
+		_isSP = new SistemaDePontuacao();
+		_isSL = new SistemaDeLeitura();
 		_isUsernameDoLeitor = usernameDoLeitor;
 	}
 	
@@ -32,17 +32,14 @@ public class SistemaDoMenu {
 	
 	protected void visualizacaoDoPerfil ( ) throws FileNotFoundException, IOException {
 		System.out.println("Username do Leitor: "+_isUsernameDoLeitor);
-		System.out.println("Pontuacao do Leitor: "+SP.calculandoPontuacao(_isUsernameDoLeitor));
+		System.out.println("Pontuacao do Leitor: "+_isSP.calculandoPontuacao(_isUsernameDoLeitor));
 	    System.out.println("Trofeus conquistados: ");
 	    
-	    List<String> estilosDoleitor = SP.identificandoEstilosDoLeitor(_isUsernameDoLeitor);
+	    List<String> estilosDoleitor = _isSP.identificandoEstilosDoLeitor(_isUsernameDoLeitor);
 	    
 	    if (estilosDoleitor == null)  System.out.println("--> Nao recebeu nenhum trofeu ainda");
-	    
 	    else {
-	    	for (String estilo : estilosDoleitor) {
-	    	 System.out.println("--> Recebeu o trofeu de Leitor de "+estilo);
-	    	}
+	    	for (String estilo : estilosDoleitor) { System.out.println("--> Recebeu o trofeu de Leitor de "+estilo); }
 	    }
 	    
 	    System.out.println("\n1 - Voltar para o Menu");
@@ -50,31 +47,28 @@ public class SistemaDoMenu {
 	
 	protected void visualizacaoDoRanking ( ) throws FileNotFoundException, IOException {
 		System.out.println("Ranking dos Leitores\n");
-		List<String> rakingDoLeitores = SP.rankingDosPontuadores();
+		List<String> rakingDoLeitores = _isSP.rankingDosPontuadores();
 		
 		if (rakingDoLeitores == null) System.out.println("Ninguem pontuou ainda");
 		
 		else {
-			for (String leitor : rakingDoLeitores) {
-		    System.out.println(leitor);
-			}
+			for (String leitor : rakingDoLeitores) { System.out.println(leitor); }
 		}
 		
 		System.out.println("\n1 - Voltar para o Menu");
 	}
 	
 	protected void visualizacaoDaListaDeLivros ( ) {
-		List<String> listaDeLivros = BL.getListaDeLivros();
-		for (String nomeDoLivro : listaDeLivros) {
-		    System.out.println("--> "+nomeDoLivro);
-		}
+		List<String> listaDeLivros = _isBL.getListaDeLivros();
+		
+		for (String nomeDoLivro : listaDeLivros) { System.out.println("--> "+nomeDoLivro); }
 		
 		System.out.println("\n1 - Visualizar as informacoes de um livro");
 	    System.out.println("2 - Voltar para o Menu");
 	}
 	
 	protected void visualizacaoDasInformacoesDeUmLivro (String nomeDoLivro) {
-		String[] livro = BL.getLivro(nomeDoLivro);
+		String[] livro = _isBL.getLivro(nomeDoLivro);
 		
 		if (livro == null) {
 			System.out.println("Esse livro nao existe em nosso banco");
@@ -91,7 +85,7 @@ public class SistemaDoMenu {
 	}
 	
 	protected String marcarLivroLido (String nomeDoLivro) throws IOException {
-		return SL.livroLido(nomeDoLivro, _isUsernameDoLeitor);
+		return _isSL.livroLido(nomeDoLivro, _isUsernameDoLeitor);
 	}
 	
 }

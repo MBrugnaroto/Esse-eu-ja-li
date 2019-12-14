@@ -16,9 +16,7 @@ public class BancoDeLivros extends TratamentoDeArquivos {
 		int i = 0;
 		
 		while (i < _isDadosDoArquivo.size()) {
-			if (_isDadosDoArquivo.get(i)[0].equalsIgnoreCase(nomeLivro)) {
-				return _isDadosDoArquivo.get(i);
-			}
+			if (_isDadosDoArquivo.get(i)[0].equalsIgnoreCase(nomeLivro)) return _isDadosDoArquivo.get(i);
 			i++;
 		}
 		return null;
@@ -32,9 +30,8 @@ public class BancoDeLivros extends TratamentoDeArquivos {
 			return listaLivros;
 		}
 		
-		for (int i = 0; i < _isDadosDoArquivo.size(); i++) {
-			listaLivros.add(_isDadosDoArquivo.get(i)[0]);
-		}
+		for (int i = 0; i < _isDadosDoArquivo.size(); i++) { listaLivros.add(_isDadosDoArquivo.get(i)[0]); }
+		
 		return listaLivros;
 	}
 	

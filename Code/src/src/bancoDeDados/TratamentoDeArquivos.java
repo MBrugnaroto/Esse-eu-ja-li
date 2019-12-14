@@ -54,19 +54,13 @@ public abstract class TratamentoDeArquivos {
 		int i = 0;
 		br.readLine();
 		
-		if (br.ready()) {
-			_isDadosDoArquivo = new ArrayList<>();
-		}
+		if (br.ready()) _isDadosDoArquivo = new ArrayList<>();
 		
 		while(br.ready()){
 			dado = br.readLine().split(Pattern.quote("|"));
-			for (i = 0; i < dado.length; i++) {
-				dado[i] = dado[i].trim();
-			}
 			
-			if (dado[i-1].equalsIgnoreCase(nomeDoLeitor)) {
-				_isDadosDoArquivo.add(dado);
-			}
+			for (i = 0; i < dado.length; i++) { dado[i] = dado[i].trim(); }
+			if (dado[i-1].equalsIgnoreCase(nomeDoLeitor)) _isDadosDoArquivo.add(dado);	
 		}
 		
 		br.close();

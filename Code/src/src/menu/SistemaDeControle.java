@@ -8,20 +8,20 @@ import src.sistema.SistemaDeLogin;
 public class SistemaDeControle {
 	private SistemaDeLogin _isLogin;
 	private SistemaDoMenu _isSM;
-	private Scanner scan;
-	private String opcaoDoUsuario;
+	private Scanner _isScan;
+	private String _isOpcaoDoUsuario;
 	
 	public SistemaDeControle () throws FileNotFoundException, IOException {
 		_isLogin = new SistemaDeLogin();
-		scan = new Scanner(System.in);
+		_isScan = new Scanner(System.in);
 		login();
 	}
 	
 	private void login () throws FileNotFoundException, IOException {
 		System.out.println("Username: ");
-		String username = scan.nextLine();
+		String username = _isScan.nextLine();
 		System.out.println("Key: ");
-		String key = scan.nextLine();
+		String key = _isScan.nextLine();
 		
 		String permissaoDeAcesso = _isLogin.login(username, key);
 	
@@ -38,14 +38,14 @@ public class SistemaDeControle {
 	private void sistemaLogado() throws FileNotFoundException, IOException {
 		_isSM.menu();
 		System.out.println("OPCAO: ");
-		opcaoDoUsuario = scan.nextLine();
+		_isOpcaoDoUsuario = _isScan.nextLine();
 		
-		if (opcaoDoUsuario.equals("1")) perfil();
-		if (opcaoDoUsuario.equals("2")) ranking();
-		if (opcaoDoUsuario.equals("3")) listaDeLivros();
-		if (opcaoDoUsuario.equals("4")) informacaoLivro();
-		if (opcaoDoUsuario.equals("5")) marcarComoLido();
-		if (opcaoDoUsuario.equals("6")) sair();
+		if (_isOpcaoDoUsuario.equals("1")) perfil();
+		if (_isOpcaoDoUsuario.equals("2")) ranking();
+		if (_isOpcaoDoUsuario.equals("3")) listaDeLivros();
+		if (_isOpcaoDoUsuario.equals("4")) informacaoLivro();
+		if (_isOpcaoDoUsuario.equals("5")) marcarComoLido();
+		if (_isOpcaoDoUsuario.equals("6")) sair();
 	}
 	
 	private void sair() {
@@ -54,7 +54,7 @@ public class SistemaDeControle {
 	
 	private void marcarComoLido() throws IOException {
 		System.out.println("Nome do Livro: ");
-		System.out.println(_isSM.marcarLivroLido(scan.nextLine()));
+		System.out.println(_isSM.marcarLivroLido(_isScan.nextLine()));
 		sistemaLogado();
 	}
 	
@@ -65,36 +65,36 @@ public class SistemaDeControle {
 	
 	private void informacaoLivro() throws IOException, FileNotFoundException {
 		System.out.println("Nome do Livro: ");
-		String nomeDoLivro = scan.nextLine();
+		String nomeDoLivro = _isScan.nextLine();
 		_isSM.visualizacaoDasInformacoesDeUmLivro(nomeDoLivro);
-		opcaoDoUsuario = scan.nextLine();
+		_isOpcaoDoUsuario = _isScan.nextLine();
 		
-		if (opcaoDoUsuario.equals("1")) marcarComoLido(nomeDoLivro);
-		if (opcaoDoUsuario.equals("2")) sistemaLogado();
+		if (_isOpcaoDoUsuario.equals("1")) marcarComoLido(nomeDoLivro);
+		if (_isOpcaoDoUsuario.equals("2")) sistemaLogado();
 	}
 	
 	private void listaDeLivros() throws IOException, FileNotFoundException {
 		_isSM.visualizacaoDaListaDeLivros();
 		System.out.println("OPCAO: ");
-		opcaoDoUsuario = scan.nextLine();
+		_isOpcaoDoUsuario = _isScan.nextLine();
 		
-		if (opcaoDoUsuario.equals("1")) informacaoLivro(); 
-		if (opcaoDoUsuario.equals("2")) sistemaLogado(); 
+		if (_isOpcaoDoUsuario.equals("1")) informacaoLivro(); 
+		if (_isOpcaoDoUsuario.equals("2")) sistemaLogado(); 
 	}
 	
 	private void ranking() throws FileNotFoundException, IOException {
 		_isSM.visualizacaoDoRanking();
 		System.out.println("OPCAO: ");
-		opcaoDoUsuario = scan.nextLine();
+		_isOpcaoDoUsuario = _isScan.nextLine();
 		
-		if (opcaoDoUsuario.equals("1")) sistemaLogado();
+		if (_isOpcaoDoUsuario.equals("1")) sistemaLogado();
 	}
 	
 	private void perfil() throws FileNotFoundException, IOException {
 		_isSM.visualizacaoDoPerfil();
 		System.out.println("OPCAO: ");
-		opcaoDoUsuario = scan.nextLine();
+		_isOpcaoDoUsuario = _isScan.nextLine();
 		
-		if (opcaoDoUsuario.equals("1")) sistemaLogado();
+		if (_isOpcaoDoUsuario.equals("1")) sistemaLogado();
 	}
 }
