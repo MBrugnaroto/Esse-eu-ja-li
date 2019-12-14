@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-public class BancoDeUsuários extends TratamentoDeArquivos {
+public class BancoDeUsuarios extends TratamentoDeArquivos {
 	private int _ifNumeroDeRegistroDoUsuario;
 	private List<String[]> dadosDoArquivo;
 	
-	public BancoDeUsuários () throws FileNotFoundException, IOException {
+	public BancoDeUsuarios () throws FileNotFoundException, IOException {
 		dadosDoArquivo = lendoOArquivo("Registro de Usuários");
 		_ifNumeroDeRegistroDoUsuario = 0;
 	}
