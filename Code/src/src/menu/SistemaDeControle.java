@@ -12,6 +12,7 @@ public class SistemaDeControle {
 	private String _isOpcaoDoUsuario;
 	
 	public SistemaDeControle () throws FileNotFoundException, IOException {
+		System.out.println("--- Bem Vindo!! Faço o login para prosseguir. ---\n");
 		_isLogin = new SistemaDeLogin();
 		_isScan = new Scanner(System.in);
 		login();
