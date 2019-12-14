@@ -5,7 +5,7 @@ import java.io.IOException;
 import src.bancoDeDados.BancoDeLivros;
 import src.bancoDeDados.TratamentoDeArquivos;
 
-public class Leitura extends TratamentoDeArquivos{
+public class SistemaDeLeitura extends TratamentoDeArquivos{
 
 	public String livroLido(String NomeDoLivro, String nomeDoLeitor) throws IOException {
 		BancoDeLivros BL = new BancoDeLivros();
@@ -17,7 +17,7 @@ public class Leitura extends TratamentoDeArquivos{
 		
 		adicionandoLivroNoArquivo(dadosDolivro, nomeDoLeitor);
 		
-		return "Adicionado no Banco";
+		return "Marcado como lido";
 	}
 
 }
