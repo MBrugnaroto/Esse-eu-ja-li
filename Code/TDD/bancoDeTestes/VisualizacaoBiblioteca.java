@@ -34,10 +34,10 @@ class VisualizacaoBiblioteca {
 	@Test
 	void retornaUmLivroExpecifico() throws FileNotFoundException, IOException {
 		BancoDeLivros BL = new BancoDeLivros();
-		String[] dadosDolivro = BL.getLivro("O Poder da Autorresponsabilidade");
-		assertEquals(dadosDolivro[0], "O Poder da Autorresponsabilidade");
-		assertEquals(dadosDolivro[1], "Paulo Vieira");
-		assertEquals(dadosDolivro[2], "Negócios");
-		assertEquals(dadosDolivro[3], "160");
+		String[] dadosDolivro = BL.getLivro("Summit Lake");
+		assertEquals(dadosDolivro[0], "Summit Lake");
+		assertEquals(dadosDolivro[1], "Charlie Donlea");
+		assertEquals(dadosDolivro[2], "Ficção");
+		assertEquals(dadosDolivro[3], "295");
 	}
 }

@@ -8,14 +8,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import src.sistema.Pontuacao;
+import src.sistema.SistemaDePontuacao;
 
 class Gamificacao {
 	
 	//US5.2 - Requisito 1:
 	@Test
 	void selecionandoDados() throws FileNotFoundException, IOException {
-		Pontuacao P = new Pontuacao();
+		SistemaDePontuacao P = new SistemaDePontuacao();
 		List<String[]> dados = P.coletandoDadosDoUsuario("Mateus Brugnaroto");
 		assertEquals(dados.get(0)[0], "O Poder da Autorresponsabilidade");
 		assertEquals(dados.get(1)[0], "Vamos ve o que vai da pra fechar");
@@ -23,7 +23,7 @@ class Gamificacao {
 	}
 	@Test
 	void selecionandoDadoDeUmUsuarioInexistente() throws FileNotFoundException, IOException {
-		Pontuacao P = new Pontuacao();
+		SistemaDePontuacao P = new SistemaDePontuacao();
 		List<String[]> dados = P.coletandoDadosDoUsuario("Mateus");
 		assertEquals(dados.isEmpty(), true);
 	}
@@ -31,14 +31,14 @@ class Gamificacao {
 	//US5.2 - Requisito 2:
 	@Test
 	void calculandoPontosTotal() throws FileNotFoundException, IOException {
-		Pontuacao P = new Pontuacao();
+		SistemaDePontuacao P = new SistemaDePontuacao();
 		assertEquals(P.calculandoPontuacao("Mateus Brugnaroto"), 22);
 	}
 	
 	//US5.3 - Requisito 1:
 	@Test
 	void listaOsEstilosPreferidos() throws FileNotFoundException, IOException {
-		Pontuacao P = new Pontuacao();
+		SistemaDePontuacao P = new SistemaDePontuacao();
 		List<String> estilos = P.identificandoEstilosDoLeitor("Nanotec");
 		assertEquals(estilos.get(0), "Negócios");
 		assertEquals(estilos.get(1), "Autoajuda");
@@ -47,8 +47,8 @@ class Gamificacao {
 	//US6.1 - Requisito 1:
 		@Test
 		void listandoONomeDosLeitoresQuePontuaram() throws FileNotFoundException, IOException {
-			Pontuacao P = new Pontuacao();
-			assertEquals(P.listaDePontuadores().get(0), "Posicao: 1 -> Nome: Nanotec | Pontuacao: 26");
-			assertEquals(P.listaDePontuadores().get(1), "Posicao: 2 -> Nome: Mateus Brugnaroto | Pontuacao: 22");
+			SistemaDePontuacao P = new SistemaDePontuacao();
+			assertEquals(P.rankingDosPontuadores().get(0), "Posicao: 1 -> Nome: Nanotec | Pontuacao: 26");
+			assertEquals(P.rankingDosPontuadores().get(1), "Posicao: 2 -> Nome: Mateus Brugnaroto | Pontuacao: 22");
 		}	
 }

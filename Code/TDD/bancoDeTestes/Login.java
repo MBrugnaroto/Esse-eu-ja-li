@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import src.bancoDeDados.BancoDeUsuários;
+import src.bancoDeDados.BancoDeUsuarios;
 import src.sistema.SistemaDeLogin;
 
 class Login {
@@ -37,19 +37,19 @@ class Login {
 	//US1 - Requisito 2:
 	@Test
 	void retornaUsernameInválido() throws FileNotFoundException, IOException {
-		BancoDeUsuários bd = new BancoDeUsuários();
+		BancoDeUsuarios bd = new BancoDeUsuarios();
 		String informacao = bd.getAcessoUsuario("kdsadsada");
 		assertEquals(informacao, "Username inválido");	
 	}
 	@Test
 	void retornaUmaKey() throws FileNotFoundException, IOException {
-		BancoDeUsuários bd = new BancoDeUsuários();
+		BancoDeUsuarios bd = new BancoDeUsuarios();
 		String informacao = bd.getAcessoUsuario("kadore");
 		assertEquals(informacao, "kado123");	
 	}
 	@Test
 	void retornaUmaKeyAPartirDoUsername() throws FileNotFoundException, IOException {
-		BancoDeUsuários bd = new BancoDeUsuários();
+		BancoDeUsuarios bd = new BancoDeUsuarios();
 		String informacao = bd.getAcessoUsuario("kadore");
 		assertEquals(informacao, "kado123");
 	}
